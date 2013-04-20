@@ -8,7 +8,7 @@
 
 ```html
 <script type="text/javascript" src="/js/angular.min.js"></script>
-<script type="text/javascript" src="/js/angular-faye.js">
+<script type="text/javascript" src="/js/angular-faye.js"></script>
 <script type="text/javascript" src="http://localhost:9292/faye/client.js"></script>
 <script type="text/javascript" src="/js/app.js"></script>
 ```
@@ -47,7 +47,6 @@ app.factory 'Faye', ['$faye', ($faye) ->
 ]
 
 @TestCtrl = ($scope, $http, Faye) ->
-
   # Publish
   Faye.publish("/channel-1", {msg: "hello"})
 
