@@ -1,0 +1,26 @@
+doctype html
+html ng-app="test"
+  head
+    title Angular.js + Faye
+
+    script type="text/javascript" src="/js/angular.min.js"
+    script type="text/javascript" src="/js/angular-faye.js"
+    script type="text/javascript" src="http://localhost:9292/faye/client.js"
+    script type="text/javascript" src="/js/app.js"
+
+  body ng-controller="TestCtrl"
+
+    div style="float: left; width: 300px"
+      button ng-click="publishFoo()" Publish {{ foo }} to "/test-channel-bar"
+      h4 Channel /test-channel-foo data
+      p This will be updated with every publish
+      ul
+        li ng-repeat="msg in channelFoo"
+          pre {{ msg | json }}
+
+    div style="float: left; width: 300px"
+      button ng-click="publishBar()" Publish {{ bar }} to "/test-channel-foo"
+
+      h4 One time /test-channel-bar data
+      p This will be updated only once
+      pre {{ channelBar | json }}
