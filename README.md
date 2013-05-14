@@ -1,8 +1,20 @@
-# Angular.js + Faye example
-
-[Download angular-faye.js](https://github.com/teamon/angular-faye/raw/master/public/js/angular-faye.js)
+# Angular.js + Faye
 
 ## Usage
+
+Add the following to your gemfile:
+
+```ruby
+gem "angular-faye-rails"
+```
+
+Add the following directive to your Javascript manifest file (application.js):
+
+```js
+//= require angular-faye
+```
+
+## Example
 
 ### HTML
 
@@ -58,19 +70,6 @@ app.factory 'Faye', ['$faye', ($faye) ->
   # Get just once (using $q - promise)
   $scope.data = Faye.get("/channel-3")
 ```
-
-
-
-## Run example
-
-```bash
-$ bundle
-$ bundle exec ruby app.rb
-
-# In different shell
-$ bundle exec ruby faye.rb
-```
-
 
 
 

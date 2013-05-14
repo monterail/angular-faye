@@ -1,8 +1,4 @@
 source "http://rubygems.org"
 
-gem "sinatra"
-gem "slim"
-gem "faye"
-gem "coffee-script"
-gem "httparty"
-
+# Specify your gem's dependencies in angular-faye-rails.gemspec
+gemspec
