@@ -5,6 +5,8 @@
 Add the following to your gemfile:
 
 ```ruby
+gem "faye"
+gem "angular-rails"
 gem "angular-faye-rails"
 ```
 
@@ -14,42 +16,16 @@ Add the following directive to your Javascript manifest file (application.js):
 //= require angular-faye
 ```
 
+Add the following to your HTML layout
+
+```erb
+<%= javascript_include_tag "http://localhost:9292/faye/client.js" %>
+```
+
+
 ## Example
 
-### HTML
-
-```html
-<script type="text/javascript" src="/js/angular.min.js"></script>
-<script type="text/javascript" src="/js/angular-faye.js"></script>
-<script type="text/javascript" src="http://localhost:9292/faye/client.js"></script>
-<script type="text/javascript" src="/js/app.js"></script>
-```
-
-### JavaScript (app.js)
-
-```js
-var app = angular.module('myapp', ['faye']);
-
-app.factory('Faye', ['$faye', function($faye) {
-  return $faye("http://localhost:9292/faye"); // set faye url in one place
-}]);
-
-this.TestCtrl = function($scope, $http, Faye) {
-  // Publish
-  Faye.publish("/channel-1", {msg: "hello"});
-
-  // Subscribe
-  $scope.data = [];
-  Faye.subscribe("/channel-2", function(msg) {
-    $scope.data.push(msg);
-  });
-
-  // Get just once (using $q - promise)
-  $scope.data = Faye.get("/channel-3");
-};
-```
-
-### CoffeeScript (the same as above, just in coffee)
+### CoffeeScript
 
 ```coffee
 app = angular.module('myapp', ['faye'])

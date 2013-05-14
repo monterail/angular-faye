@@ -1,23 +1,25 @@
-angular.module('faye', []);
+# = require angular
 
-angular.module('faye').factory('$faye', ['$q', function($q){
-  return function(url){
-    var client = new Faye.Client(url);
-    return {
-      publish: function(channel, data){
-        return client.publish(channel, data);
-      },
-      subscribe: function(channel, callback){
-        return client.subscribe(channel, callback);
-      },
-      get: function(channel){
-        var deferred = $q.defer();
-        var sub = client.subscribe(channel, function(data){
-          deferred.resolve(data);
-          sub.cancel();
-        });
-        return deferred.promise;
-      }
-    };
-  };
-}]);
+angular.module "faye", []
+
+angular.module("faye").factory "$faye", ["$q", "$rootScope", ($q, $rootScope) ->
+  (url) ->
+    scope = $rootScope
+    client = new Faye.Client(url)
+    publish: (channel, data) ->
+      client.publish channel, data
+
+    subscribe: (channel, callback) ->
+      client.subscribe channel, (data) ->
+        scope.$apply ->
+          callback(data)
+
+    get: (channel) ->
+      deferred = $q.defer()
+      sub = client.subscribe(channel, (data) ->
+        scope.$apply ->
+          deferred.resolve data
+        sub.cancel()
+      )
+      deferred.promise
+]
