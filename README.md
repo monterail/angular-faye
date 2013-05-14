@@ -5,8 +5,6 @@
 Add the following to your gemfile:
 
 ```ruby
-gem "faye"
-gem "angular-rails"
 gem "angular-faye-rails"
 ```
 
