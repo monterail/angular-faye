@@ -1,5 +1,5 @@
 require "angular-faye-rails/version"
-require "angular-rails"
+require "angularjs-rails"
 
 module AngularFaye
   module Rails
