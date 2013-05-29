@@ -46,6 +46,16 @@ app.factory 'Faye', ['$faye', ($faye) ->
 ```
 
 
+### Configure Faye client
+
+```coffee
+app.factory 'Faye', ['$faye', ($faye) ->
+  $faye "http://localhost:9292/faye", (client) ->
+    client.disable("websocket")
+]
+```
+
+
 
 ## Contributing
 
