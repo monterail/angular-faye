@@ -4,6 +4,7 @@
   "authors": [
     "Tymon Tobolski <tymon.tobolski@monterail.com>"
   ],
+  "repository": "git://github.com/teamon/angular-faye.git",
   "description": "Angular.js + Faye",
   "main": "build/angular-faye.js",
   "dependencies": {
