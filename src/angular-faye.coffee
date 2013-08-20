@@ -1,5 +1,3 @@
-# = require angular
-
 angular.module "faye", []
 
 angular.module("faye").factory "$faye", ["$q", "$rootScope", ($q, $rootScope) ->

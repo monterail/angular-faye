@@ -1,25 +1,6 @@
 # Angular.js + Faye
 
-## Usage
-
-Add the following to your gemfile:
-
-```ruby
-gem "angular-faye-rails"
-```
-
-Add the following directive to your Javascript manifest file (application.js):
-
-```js
-//= require angular-faye
-```
-
-Add the following to your HTML layout
-
-```erb
-<%= javascript_include_tag "http://localhost:9292/faye/client.js" %>
-```
-
+Faye client wrapper for angular
 
 ## Example
 
@@ -55,7 +36,12 @@ app.factory 'Faye', ['$faye', ($faye) ->
 ]
 ```
 
+## Development
 
+```bash
+npm install
+grunt
+```
 
 ## Contributing
 
