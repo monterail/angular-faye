@@ -26,6 +26,12 @@ app.factory 'Faye', ['$faye', ($faye) ->
   $scope.data = Faye.get("/channel-3")
 ```
 
+With initialization options:
+
+```coffee
+$faye "http://localhost:9292/faye", endpoints: { websocket: 'http://ws.example.com'}
+# ...
+```
 
 ### Configure Faye client
 
