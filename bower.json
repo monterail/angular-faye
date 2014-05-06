@@ -1,0 +1,24 @@
+{
+  "name": "angular-faye",
+  "version": "0.2.1",
+  "homepage": "https://github.com/monterail/angular-faye",
+  "description": "Angular.js + Faye",
+  "main": "build/angular-faye.js",
+  "keywords": [
+    "angular",
+    "faye",
+    "ruby"
+  ],
+  "authors": [
+    "Tymon Tobolski <tymon.tobolski@monterail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "app/bower_components",
+    "test",
+    "tests"
+  ]
+}
