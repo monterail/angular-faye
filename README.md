@@ -37,7 +37,7 @@ $faye "http://localhost:9292/faye", endpoints: { websocket: 'http://ws.example.c
 
 ```coffee
 app.factory 'Faye', ['$faye', ($faye) ->
-  $faye("http://localhost:9292/faye").then (client) ->
+  $faye "http://localhost:9292/faye", (client) ->
     client.disable("websocket")
 ]
 ```
