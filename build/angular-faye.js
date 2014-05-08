@@ -3,18 +3,14 @@
 
   angular.module("faye").factory("$faye", [
     "$q", "$rootScope", function($q, $rootScope) {
-      return function(url, fun, options) {
-        var client;
+      return function(url, options) {
+        var client, deferred;
         if (options == null) {
           options = {};
         }
-        if (typeof fun !== "function") {
-          options = fun;
-        }
+        deferred = $q.defer();
         client = new Faye.Client(url, options);
-        if (typeof fun === "function") {
-          fun(client);
-        }
+        deferred.resolve(client);
         return {
           client: client,
           publish: function(channel, data) {
@@ -28,7 +24,7 @@
             });
           },
           get: function(channel) {
-            var deferred, sub;
+            var sub;
             deferred = $q.defer();
             sub = this.client.subscribe(channel, function(data) {
               scope.$apply(function() {

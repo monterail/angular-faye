@@ -1,12 +1,11 @@
 angular.module "faye", []
 
 angular.module("faye").factory "$faye", ["$q", "$rootScope", ($q, $rootScope) ->
-  (url, fun, options = {}) ->
-    options = fun if typeof fun isnt "function"
-
+  (url, options = {}) ->
+    deferred = $q.defer()
     client = new Faye.Client(url, options)
-    fun?(client)
-
+    deferred.resolve(client)
+    deferred.promise
 
     client: client
     publish: (channel, data) ->
