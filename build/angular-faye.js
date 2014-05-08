@@ -3,10 +3,15 @@
 
   angular.module("faye").factory("$faye", [
     "$q", "$rootScope", function($q, $rootScope) {
-      return function(url, fun) {
-        var client, scope;
-        scope = $rootScope;
-        client = new Faye.Client(url);
+      return function(url, fun, options) {
+        var client;
+        if (options == null) {
+          options = {};
+        }
+        if (typeof fun !== "function") {
+          options = fun;
+        }
+        client = new Faye.Client(url, options);
         if (typeof fun === "function") {
           fun(client);
         }
