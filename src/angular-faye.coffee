@@ -2,7 +2,8 @@ angular.module "faye", []
 
 angular.module("faye").factory "$faye", ["$q", "$rootScope", ($q, $rootScope) ->
   (url, fun, options = {}) ->
-    scope = $rootScope
+    options = fun if typeof fun isnt "function"
+
     client = new Faye.Client(url, options)
     fun?(client)
 
