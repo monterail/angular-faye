@@ -31,7 +31,7 @@ app.factory 'Faye', ['$faye', ($faye) ->
 
 ```coffee
 app.factory 'Faye', ['$faye', ($faye) ->
-  $faye "http://localhost:9292/faye", (client) ->
+  $faye "http://localhost:9292/faye", {retry: 5}, (client) ->
     client.disable("websocket")
 ]
 ```
@@ -40,8 +40,17 @@ app.factory 'Faye', ['$faye', ($faye) ->
 
 ```bash
 npm install
-grunt
+grunt watch
 ```
+
+## Testing
+
+```
+node ./build/server.js
+```
+1. Modify test/test.coffee.
+2. Open test/index.html.
+3. You should see executed events in console.
 
 ## Contributing
 
