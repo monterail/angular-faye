@@ -16,6 +16,9 @@ angular.module("faye").factory "$faye", ["$q", "$rootScope", ($q, $rootScope) ->
         scope.$apply ->
           callback(data)
 
+    unsubscribe: (channel) ->
+      @client.unsubscribe channel
+
     get: (channel) ->
       deferred = $q.defer()
       sub = @client.subscribe(channel, (data) ->

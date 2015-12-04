@@ -22,6 +22,9 @@
               });
             });
           },
+          unsubscribe: function(channel) {
+            return this.client.unsubscribe(channel);
+          },
           get: function(channel) {
             var deferred, sub;
             deferred = $q.defer();
