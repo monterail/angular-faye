@@ -1,6 +1,7 @@
 module.exports = (grunt) ->
   grunt.loadNpmTasks('grunt-contrib-coffee')
-  grunt.loadNpmTasks('grunt-contrib-uglify');
+  grunt.loadNpmTasks('grunt-contrib-uglify')
+  grunt.loadNpmTasks('grunt-contrib-watch')
   grunt.loadNpmTasks('grunt-release')
 
   grunt.config.init
@@ -9,6 +10,7 @@ module.exports = (grunt) ->
       default:
         files:
           "build/angular-faye.js": "src/angular-faye.coffee"
+          "build/test.js": "test/test.coffee"
     uglify:
       options:
         banner: '/*! <%= pkg.name %> <%= grunt.template.today("yyyy-mm-dd") %> */\n'
@@ -18,5 +20,9 @@ module.exports = (grunt) ->
     release:
       options:
         npm: false
+    watch:
+      scripts:
+        files: ['src/*', 'test/*']
+        tasks: ['default']
 
   grunt.registerTask "default", ["coffee", "uglify"]
