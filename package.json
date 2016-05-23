@@ -2,14 +2,15 @@
   "name": "angular-faye",
   "version": "0.2.2",
   "authors": [
-    "Tymon Tobolski <tymon.tobolski@monterail.com>"
+    "Tymon Tobolski <tymon.tobolski@monterail.com>",
+    "Monterail"
   ],
-  "repository": "git://github.com/teamon/angular-faye.git",
+  "repository": "git://github.com/monterail/angular-faye.git",
   "description": "Angular.js + Faye",
   "main": "build/angular-faye.js",
   "dependencies": {
     "angular": ">= 1.0.0",
-    "faye": ">=1.1.1",
+    "faye": ">= 1.1.1",
     "permessage-deflate": ""
   },
   "devDependencies": {
@@ -25,12 +26,12 @@
     "ruby"
   ],
   "license": "MIT",
-  "homepage": "http://github.com/teamon/angular-faye",
+  "homepage": "http://github.com/monterail/angular-faye",
   "ignore": [
     "**/.*",
     "node_modules",
     "bower_components",
     "test",
     "tests"
-  ]
+  ]g
 }
