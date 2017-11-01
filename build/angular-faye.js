@@ -2,7 +2,7 @@
   angular.module("faye", []);
 
   angular.module("faye").factory("$faye", [
-    "$q", "$rootScope", function($q, $rootScope) {
+    "$q", "$rootScope", "$timeout", function($q, $rootScope, $timeout) {
       return function(url, modifiers, fun) {
         var client, scope;
         scope = $rootScope;
@@ -17,7 +17,7 @@
           },
           subscribe: function(channel, callback) {
             return this.client.subscribe(channel, function(data) {
-              return scope.$apply(function() {
+              return $timeout(function() {
                 return callback(data);
               });
             });
@@ -26,7 +26,7 @@
             var deferred, sub;
             deferred = $q.defer();
             sub = this.client.subscribe(channel, function(data) {
-              scope.$apply(function() {
+              $timeout(function() {
                 return deferred.resolve(data);
               });
               return sub.cancel();

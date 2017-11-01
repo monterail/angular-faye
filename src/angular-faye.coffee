@@ -1,6 +1,6 @@
 angular.module "faye", []
 
-angular.module("faye").factory "$faye", ["$q", "$rootScope", ($q, $rootScope) ->
+angular.module("faye").factory "$faye", ["$q", "$rootScope", "$timeout", ($q, $rootScope, $timeout) ->
   (url, modifiers, fun) ->
     scope = $rootScope
     client = new Faye.Client(url, modifiers)
@@ -13,13 +13,13 @@ angular.module("faye").factory "$faye", ["$q", "$rootScope", ($q, $rootScope) ->
 
     subscribe: (channel, callback) ->
       @client.subscribe channel, (data) ->
-        scope.$apply ->
+        $timeout ->
           callback(data)
 
     get: (channel) ->
       deferred = $q.defer()
       sub = @client.subscribe(channel, (data) ->
-        scope.$apply ->
+        $timeout ->
           deferred.resolve data
         sub.cancel()
       )
